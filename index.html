@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Storytelling Image Prompts Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; background: #f7fafc; margin: 0; padding: 0; }
+    .container { max-width: 700px; margin: 40px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px #e0e0e0; padding: 32px 24px; }
+    h1 { text-align: center; color: #1a202c; }
+    label { display: block; margin-top: 18px; color: #333; font-weight: bold; }
+    input { width: 100%; padding: 10px; margin-top: 6px; border: 1px solid #bbb; border-radius: 4px; font-size: 1em; }
+    button { margin-top: 24px; width: 100%; padding: 12px; background: #2563eb; color: #fff; border: none; border-radius: 4px; font-size: 1.1em; cursor: pointer; }
+    button:hover { background: #1d4ed8; }
+    .output { margin-top: 32px; background: #f0f4f8; border-radius: 6px; padding: 18px; }
+    .output h2 { margin-top: 0; }
+    textarea { width: 100%; min-height: 480px; padding: 10px; border: 1px solid #bbb; border-radius: 4px; font-size: 1em; margin-top: 12px; background: #f5f9ff; white-space: pre-wrap; }
+    .copy-btn { margin-top: 12px; padding: 8px 16px; background: #22c55e; color: #fff; border: none; border-radius: 4px; font-size: 1em; cursor: pointer; }
+    .copy-btn:hover { background: #16a34a; }
+    @media (max-width: 600px) {
+      .container { padding: 12px 8px; }
+      textarea { min-height: 360px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Storytelling Image Prompts Generator</h1>
+    <label for="topicInput">Enter your specific topic:</label>
+    <input type="text" id="topicInput" placeholder="e.g. renewable energy, luxury car, AI innovation" required>
+    <button id="generateBtn">Generate Prompts</button>
+
+    <div class="output" id="output" style="display:none;">
+      <h2>Top 25 Storytelling Image Prompts</h2>
+      <textarea id="promptsArea" readonly></textarea>
+      <button class="copy-btn" id="copyBtn">Copy All Prompts</button>
+    </div>
+  </div>
+  <script>
+    const prompts = [
+      "A 4K hyper-realistic cinematic image introducing [specific topic] at sunrise, with dramatic lighting and sweeping landscape.",
+      "A close-up, highly detailed portrait of [specific topic] in action, with intense focus and dynamic background effects.",
+      "A breathtaking panoramic scene featuring [specific topic] at the center, surrounded by epic natural elements.",
+      "A futuristic cityscape at night themed around [specific topic], glowing neon lights and reflective surfaces.",
+      "A macro shot of [specific topic], showing intricate textures and vivid colors, cinematic depth of field.",
+      "A dramatic action scene with [specific topic] in motion, motion blur and explosive visual effects.",
+      "A magical, whimsical setting where [specific topic] is explored through the eyes of a child, vibrant colors and dreamy lighting.",
+      "A time-lapse composite image of [specific topic] evolving from dawn to dusk, with shifting shadows and atmospheric changes.",
+      "A hero’s journey tableau of [specific topic], cinematic lighting and powerful, inspiring composition.",
+      "A surreal dreamscape interpretation of [specific topic], blending real and fantastical elements with ethereal effects.",
+      "A scene of [specific topic] emerging from darkness into light, with particles, lens flares, and high contrast.",
+      "An underwater world featuring [specific topic], with realistic bubbles, caustics, and immersive aquatic ambiance.",
+      "A bustling metropolis with [specific topic] as the focal point, hyper-detailed crowds and dynamic urban energy.",
+      "A continuous narrative sequence of [specific topic] moving through different environments, seamless transitions.",
+      "A cinematic montage of [specific topic] impacting people’s lives, emotional close-ups and soft, glowing highlights.",
+      "A journey through the four seasons with [specific topic], hyper-realistic environmental changes and rich textures.",
+      "A high-tech laboratory scene centered on [specific topic], with holographic displays and futuristic wow effects.",
+      "A race-against-time themed image of [specific topic], split-screen elements and dramatic lighting.",
+      "A reflection-based composition where [specific topic] is seen in glass, water, or mirrors, with stunning clarity.",
+      "A fantasy world interpretation of [specific topic], mythical creatures, floating islands, and magical particles.",
+      "A multi-perspective collage of [specific topic] seen through different characters’ eyes, unique color palettes.",
+      "An outer space view zooming into [specific topic] on Earth, hyper-realistic planetary and atmospheric effects.",
+      "A powerful force-of-nature depiction of [specific topic], with storms, lightning, and dramatic skies.",
+      "A real-time build-up or creation of [specific topic], with close-up details, mechanical parts, and satisfying visuals.",
+      "A grand panoramic reveal of [specific topic] in a cinematic landscape, with a vibrant sky and atmospheric effects."
+    ];
+
+    document.getElementById('generateBtn').onclick = function() {
+      const topic = document.getElementById('topicInput').value.trim();
+      if (!topic) return;
+
+      const filledPrompts = prompts.map(p => p.replace(/\[specific topic\]/g, topic));
+      document.getElementById('promptsArea').value = filledPrompts.map((p, i) => `${i+1}. ${p}`).join('\n\n');
+      document.getElementById('output').style.display =
