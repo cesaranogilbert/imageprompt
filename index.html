@@ -38,31 +38,31 @@
   </div>
   <script>
     const prompts = [
-      "A 4K hyper-realistic cinematic image introducing [specific topic] at sunrise, with dramatic lighting and sweeping landscape.",
-      "A close-up, highly detailed portrait of [specific topic] in action, with intense focus and dynamic background effects.",
-      "A breathtaking panoramic scene featuring [specific topic] at the center, surrounded by epic natural elements.",
-      "A futuristic cityscape at night themed around [specific topic], glowing neon lights and reflective surfaces.",
-      "A macro shot of [specific topic], showing intricate textures and vivid colors, cinematic depth of field.",
-      "A dramatic action scene with [specific topic] in motion, motion blur and explosive visual effects.",
-      "A magical, whimsical setting where [specific topic] is explored through the eyes of a child, vibrant colors and dreamy lighting.",
-      "A time-lapse composite image of [specific topic] evolving from dawn to dusk, with shifting shadows and atmospheric changes.",
-      "A hero’s journey tableau of [specific topic], cinematic lighting and powerful, inspiring composition.",
-      "A surreal dreamscape interpretation of [specific topic], blending real and fantastical elements with ethereal effects.",
-      "A scene of [specific topic] emerging from darkness into light, with particles, lens flares, and high contrast.",
-      "An underwater world featuring [specific topic], with realistic bubbles, caustics, and immersive aquatic ambiance.",
-      "A bustling metropolis with [specific topic] as the focal point, hyper-detailed crowds and dynamic urban energy.",
-      "A continuous narrative sequence of [specific topic] moving through different environments, seamless transitions.",
-      "A cinematic montage of [specific topic] impacting people’s lives, emotional close-ups and soft, glowing highlights.",
-      "A journey through the four seasons with [specific topic], hyper-realistic environmental changes and rich textures.",
-      "A high-tech laboratory scene centered on [specific topic], with holographic displays and futuristic wow effects.",
-      "A race-against-time themed image of [specific topic], split-screen elements and dramatic lighting.",
-      "A reflection-based composition where [specific topic] is seen in glass, water, or mirrors, with stunning clarity.",
-      "A fantasy world interpretation of [specific topic], mythical creatures, floating islands, and magical particles.",
-      "A multi-perspective collage of [specific topic] seen through different characters’ eyes, unique color palettes.",
-      "An outer space view zooming into [specific topic] on Earth, hyper-realistic planetary and atmospheric effects.",
-      "A powerful force-of-nature depiction of [specific topic], with storms, lightning, and dramatic skies.",
-      "A real-time build-up or creation of [specific topic], with close-up details, mechanical parts, and satisfying visuals.",
-      "A grand panoramic reveal of [specific topic] in a cinematic landscape, with a vibrant sky and atmospheric effects."
+      "Create a 4K cinematic image introducing [specific topic] with a dramatic sunrise, sweeping drone shots, and epic orchestral music.",
+      "Show a hyper-realistic transformation journey related to [specific topic], using slow-motion effects, rich color grading, and immersive sound design.",
+      "Generate a storytelling image where [specific topic] is revealed through a series of breathtaking landscape shots, with dynamic lighting and atmospheric effects.",
+      "Visualize [specific topic] as a futuristic cityscape at night, with neon lights, rain reflections, and cinematic camera pans.",
+      "Depict [specific topic] using macro close-ups, high-detail textures, and seamless transitions to create a sense of wonder and discovery.",
+      "Start with an intense action sequence involving [specific topic], featuring fast cuts, motion blur, and explosive visual effects.",
+      "Tell the story of [specific topic] through the eyes of a child, using vibrant colors, magical lighting, and whimsical background animations.",
+      "Create a hyper-realistic time-lapse of [specific topic] evolving from dawn to dusk, with dramatic sky changes and realistic shadows.",
+      "Present [specific topic] as a hero’s journey, with cinematic lighting, slow zooms, and powerful background scores.",
+      "Visualize [specific topic] in a surreal dreamscape, blending real-world footage with CGI wow effects and ethereal soundscapes.",
+      "Show [specific topic] emerging from darkness into light, using particle effects, lens flares, and high-contrast visuals.",
+      "Generate a 4K image where [specific topic] is explored underwater, with realistic bubbles, caustics, and immersive aquatic sounds.",
+      "Depict [specific topic] in a bustling metropolis, with hyper-detailed crowd scenes, reflective surfaces, and dynamic tracking shots.",
+      "Tell a story about [specific topic] using a single continuous shot, with seamless transitions between different environments and moods.",
+      "Create a cinematic montage of [specific topic] impacting people’s lives, with emotional close-ups and slow-motion highlights.",
+      "Visualize [specific topic] as a journey through the four seasons, using hyper-realistic environmental changes and rich sound design.",
+      "Present [specific topic] in a high-tech laboratory, with holographic displays, interactive elements, and futuristic wow effects.",
+      "Show [specific topic] as a race against time, with split-screen effects, ticking clocks, and adrenaline-pumping music.",
+      "Generate a image where [specific topic] is revealed through reflections in glass, water, and mirrors, with stunning visual clarity.",
+      "Depict [specific topic] in a fantasy world, with mythical creatures, floating islands, and magical particle effects.",
+      "Tell the story of [specific topic] through the changing perspectives of different characters, using unique color palettes and camera angles.",
+      "Create an opening shot of [specific topic] from outer space, zooming in rapidly to a hyper-realistic ground-level scene.",
+      "Visualize [specific topic] as a powerful force of nature, using weather effects like storms, lightning, and dramatic skies.",
+      "Show [specific topic] being built or created in real-time, with detailed close-ups, mechanical animations, and satisfying wow moments.",
+      "End with a breathtaking reveal of [specific topic] in a 4K hyper-realistic panorama, accompanied by a swelling cinematic soundtrack and animated title graphics."
     ];
 
     document.getElementById('generateBtn').onclick = function() {
@@ -71,4 +71,17 @@
 
       const filledPrompts = prompts.map(p => p.replace(/\[specific topic\]/g, topic));
       document.getElementById('promptsArea').value = filledPrompts.map((p, i) => `${i+1}. ${p}`).join('\n\n');
-      document.getElementById('output').style.display =
+      document.getElementById('output').style.display = 'block';
+    };
+
+    document.getElementById('copyBtn').onclick = function() {
+      const promptsArea = document.getElementById('promptsArea');
+      promptsArea.select();
+      promptsArea.setSelectionRange(0, 99999); // For mobile devices
+      document.execCommand('copy');
+      document.getElementById('copyBtn').textContent = "Copied!";
+      setTimeout(() => { document.getElementById('copyBtn').textContent = "Copy All Prompts"; }, 1500);
+    };
+  </script>
+</body>
+</html>
